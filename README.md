@@ -1,7 +1,7 @@
 React Movies
 A movie search app built with React, TypeScript, and Vite. It queries The Movie Database (TMDB) API for movies matching a keyword, paginates through the results, and lets you open any result in a modal for more details.
 
-Live demo:
+Live demo: 04-react-query-indol-gamma.vercel.app
 
 Features
 Search movies by keyword via the TMDB API
