@@ -1,34 +1,40 @@
-# React + TypeScript + Vite
+React Movies
+A movie search app built with React, TypeScript, and Vite. It queries The Movie Database (TMDB) API for movies matching a keyword, paginates through the results, and lets you open any result in a modal for more details.
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Live demo:
 
-Currently, two official plugins are available:
+Features
+Search movies by keyword via the TMDB API
+Paginated results with React Paginate
+Server state (fetching, caching, loading/error states) managed with TanStack Query
+Responsive grid of movie posters
+Modal with backdrop image, overview, release date, and rating
+Toast notifications for empty searches and empty results
+Tech stack
+Vite + React + TypeScript
+TanStack Query for data fetching and caching
+React Paginate for pagination controls
+Axios for HTTP requests
+React Hot Toast for notifications
+CSS Modules for styling
+modern-normalize for cross-browser style resets
+Getting started
+npm install
+Create a .env file in the project root with your TMDB API access token:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+VITE_TMDB_TOKEN=your_tmdb_access_token
+Then run the dev server:
 
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+npm run dev
+Available scripts
+npm run dev — start the development server
+npm run build — type-check and build for production
+npm run preview — preview the production build locally
+npm run lint — run ESLint
+npm run format — format the codebase with Prettier
+Project structure
+src/
+components/ # one folder per component, each with its .tsx and .module.css
+services/ # movieService.ts — TMDB API calls
+types/ # shared TypeScript types (Movie, FetchMoviesResponse)
+main.tsx # QueryClient / QueryClientProvider setup
