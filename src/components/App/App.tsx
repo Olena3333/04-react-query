@@ -56,35 +56,24 @@ export default function App() {
     <div className={css.app}>
       <Toaster position="top-center" />
       <SearchBar onSubmit={handleSearch} />
-
-      <main className={css.main}>
-        {isLoading && <Loader />}
-
-        {isError && <ErrorMessage />}
-
-        {!isLoading && !isError && movies.length > 0 && (
-          <MovieGrid movies={movies} onSelect={handleSelect} />
-        )}
-
-        {/* Пагінація має рендеритися лише тоді, коли кількість сторінок більша ніж 1 */}
-        {!isLoading && !isError && totalPages > 1 && (
-          <ReactPaginate
-            pageCount={totalPages}
-            pageRangeDisplayed={5}
-            marginPagesDisplayed={1}
-            onPageChange={({ selected }) => {
-              setPage(selected + 1);
-              window.scrollTo({ top: 0, behavior: "smooth" }); // Покращення UX
-            }}
-            forcePage={page - 1}
-            containerClassName={css.pagination}
-            activeClassName={css.active}
-            nextLabel="→"
-            previousLabel="←"
-          />
-        )}
-      </main>
-
+      {totalPages > 1 && (
+        <ReactPaginate
+          pageCount={totalPages}
+          pageRangeDisplayed={5}
+          marginPagesDisplayed={1}
+          onPageChange={({ selected }) => setPage(selected + 1)}
+          forcePage={page - 1}
+          containerClassName={css.pagination}
+          activeClassName={css.active}
+          nextLabel="→"
+          previousLabel="←"
+        />
+      )}
+      {isLoading && <Loader />}
+      {isError && <ErrorMessage />}
+      {!isLoading && !isError && movies.length > 0 && (
+        <MovieGrid movies={movies} onSelect={handleSelect} />
+      )}
       {selectedMovie && (
         <MovieModal movie={selectedMovie} onClose={handleCloseModal} />
       )}
