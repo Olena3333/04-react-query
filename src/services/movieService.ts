@@ -1,8 +1,9 @@
 import axios from 'axios';
 import type { FetchMoviesResponse } from '../types/movie';
 
+const BASE_URL = 'https://api.themoviedb.org/3';
 const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
-const BASE_URL = 'https://themoviedb.org';
+
 
 const movieInstance = axios.create({
   baseURL: BASE_URL,
